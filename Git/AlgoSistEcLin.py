@@ -19,10 +19,10 @@ def Gauss(A):
 def suma(A, x, i):
     sum = 0
     n = A.shape[0]
-    #for j in range(0, i+1):
     for j in range(n-1, i, -1):
         sum += A[i][j]*x[j]
     return sum
+
 
 def Sustitucion(A):
     n = A.shape[0]
@@ -33,7 +33,8 @@ def Sustitucion(A):
         x[i] = 1/ A[i][i] * (A[i, n] - suma(A, x, i)) 
     return x
 
-A = np.array(
+
+M = np.array(
     [
         [1, 2, 1, 2],
         [2, 6, 1, 7],
@@ -41,50 +42,19 @@ A = np.array(
     ], dtype='f'
 )
 
-"""
-a = np.array([
-    [1, 1, 3, -2, -1], 
-    [5, -2, 3, 7, 8],
-    [-3, -1, 2, 7, 5],
-    [5, 3, 1, -2, -7]], dtype='f')"""
-
-"""
-a = np.array([
-    [1, 1,1, 1, 0], 
-    [1, 2, 3, 4, 0],
-    [1, 3, 6, 10, 0],
-    [1, 4, 10, 20, 0]], dtype='f')"""
-
-"""
-a = np.array([
-    [2, -1, -1, 0], 
-    [3, 4, -2, 0],
-    [3, -2, 4, 0]], dtype='f')"""
-
-a = np.array([
-    [1, -1, 1, 1, 2, -1], 
-    [-1, 1, 1, 1, -4, 3],
-    [-1, -1, 1, 1, -2, 3],
-    [1, -2, 1, 2, 3, -1],
-    [0, -4, 1, 5, 3, 1]
-    ], dtype='f')
-
-a = np.array([
-    [1, 2, 3, 4], 
-    [-1, 3, 0, 1],
-    [-5, 6, 7, 0]
-    ], dtype='f')
+A = M.copy()
 
 
-print("Matriz: \n", a)
-Gaus= Gauss(a)
+
+print("Matriz aumentada: \n", M)
+Gaus = Gauss(M)
 if Gaus.all() != None:
     print("Matriz: \n", np.round(Gaus, 3))
-    Sol = Sustitucion(Gaus)
+    Sol = Sustitucion(Gaus).reshape(3, 1)
     print("Solucion:\n", np.round(Sol, 3))
 
-    B = np.delete(a, -1, axis=1)
-    Sol = np.array(Sol).reshape(3, 1)
-    print("Solucion: \n", Sol)
-    print("B:\n", B)
-    print("Solución: \n", np.round(np.matmul(B, Sol), 2)) 
+    A = np.delete(A, -1, axis=1)
+    #Sol = np.array(Sol).reshape(3, 1)
+    #print("Solucion: \n", Sol)
+    print("A:\n", A)
+    print("Constantes: \n", np.round(np.matmul(A, Sol), 2)) 
