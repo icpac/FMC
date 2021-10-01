@@ -1,3 +1,6 @@
+__autor__ = "Tlacaelel Icpac"
+__email__ = "tlacaelel.icpac@gmail.com"
+
 import numpy as np
 
 
