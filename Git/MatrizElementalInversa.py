@@ -8,16 +8,17 @@ __email__ = "tlacaelel.icpac@gmail.com"
 
 import numpy as np
 
+def PrintMul(a, b):
+    print("Matriz:\n", a) 
+    print("Producto: \n", np.matmul(a, b))
+
+
 a = np.array(
     [
         [0, 1],
         [1, 0]
     ]
 )
-
-def PrintMul(a, b):
-    print("Matriz:\n", a) 
-    print("Producto: \n", np.matmul(a, b))
 
 b = np.array(
     [
